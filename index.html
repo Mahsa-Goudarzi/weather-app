@@ -23,120 +23,123 @@
 
   <body>
     <div class="container">
-      <!--this part forms the search engine and buttons-->
-      <form>
-        <div class="input-group mb-3">
-          <input type="text" id="city-input" class="form-control" placeholder="Enter the city" autocomplete="off" aria-label="Recipient's username" aria-describedby="button-addon2">
-          <button class="btn btn-primary" type="submit">Search</button>
-          <button class="btn btn-success" type="button" id="current-button">Current</button>
-        </div>  
-      </form>
+      <div class="weather-container">
+        <!--this part forms the search engine and buttons-->
+        <form>
+          <div class="input-group mb-3">
+            <input type="text" id="city-input" class="form-control" placeholder="Enter the city" autocomplete="off" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-success" type="button" id="current-button">Current</button>
+          </div>  
+        </form>
 
-      <!--this part shows the city chosen and the time -->
-      <div class="row">
-        <div class="col">
-          <h2 id="city">Tehran</h2>
-          <h5 id="current-time">Saturday 12:00</h5>  
-      </div>
-
-      <!--this part shows today's forcast-->
-      <div class="row">
-        <div class="col">
-          <img src="images/sun.svg" width="80px" />
+        <!--this part shows the city chosen and the time -->
+        <div class="row">
+          <div class="col">
+            <h2 id="city">Tehran</h2>
+            <h5 id="current-time">Saturday 12:00</h5>  
         </div>
-        <div class="col">
-          <div id="description">Mostly sunny</div>
-          <div>
-            <span id="temperature">31</span>
-            <span class="unites">
-              <a href="#" id="celsius-link">°C</a>
-              |
-              <a href="#" id="farenheit-link">°F</a>
-            </span>
+
+        <!--this part shows today's forcast-->
+        <div class="row">
+          <div class="col">
+            <img src="images/sun.svg" width="80px" />
           </div>
-          <div>
-            <small>
-              <span class="high-temperature" id="high-temp-today">32</span
+          <div class="col">
+            <div id="description">Mostly sunny</div>
+            <div>
+              <span id="temperature">31</span>
+              <span class="unites">
+                <a href="#" id="celsius-link">°C</a>
+                |
+                <a href="#" id="farenheit-link">°F</a>
+              </span>
+            </div>
+            <div>
+              <small>
+                <span class="high-temperature" id="high-temp-today">32</span
+                ><span class="degree">°C</span> /
+                <span class="low-temperature" id="low-temp-today">20</span
+                ><span class="degree">°C</span>
+              </small>
+            </div>
+          </div>
+          <div class="col">
+            <div>Humidity: <span id="humidity">14</span>%</div>
+            <div>Wind: <span id="wind">11</span> km/h</div>
+          </div>
+        </div>
+
+        <hr />
+
+        <!--this part shows next five days forcast in a Bootstrap grid-->
+        <div class="row">
+          <div class="col forcast">
+            <div class="forcast-day">Sun</div>
+            <div class="forcast-icon">
+              <img src="images/sun.svg" />
+            </div>
+            <div class="forcast-temperature">
+              <span class="high-temperature">32</span
               ><span class="degree">°C</span> /
-              <span class="low-temperature" id="low-temp-today">20</span
+              <span class="low-temperature">20</span
               ><span class="degree">°C</span>
-            </small>
+            </div>
           </div>
-        </div>
-        <div class="col">
-          <div>Humidity: <span id="humidity">14</span>%</div>
-          <div>Wind: <span id="wind">11</span> km/h</div>
-        </div>
-      </div>
-
-
-      <hr />
-
-      <!--this part shows next five days forcast in a Bootstrap grid-->
-      <div class="row">
-        <div class="col forcast">
-          <div class="forcast-day">Sun</div>
-          <div class="forcast-icon">
-            <img src="images/sun.svg" />
+          <div class="col forcast">
+            <div class="forcast-day">Mon</div>
+            <div class="forcast-icon">
+              <img src="images/sun.svg" />
+            </div>
+            <div class="forcast-temperature">
+              <span class="high-temperature">33</span
+              ><span class="degree">°C</span> /
+              <span class="low-temperature">21</span
+              ><span class="degree">°C</span>
+            </div>
           </div>
-          <div class="forcast-temperature">
-            <span class="high-temperature">32</span
-            ><span class="degree">°C</span> /
-            <span class="low-temperature">20</span
-            ><span class="degree">°C</span>
+          <div class="col forcast">
+            <div class="forcast-day">Tue</div>
+            <div class="forcast-icon">
+              <img src="images/sun.svg" />
+            </div>
+            <div class="forcast-temperature">
+              <span class="high-temperature">33</span
+              ><span class="degree">°C</span> /
+              <span class="low-temperature">20</span
+              ><span class="degree">°C</span>
+            </div>
           </div>
-        </div>
-        <div class="col forcast">
-          <div class="forcast-day">Mon</div>
-          <div class="forcast-icon">
-            <img src="images/sun.svg" />
+          <div class="col forcast">
+            <div class="forcast-day">Wed</div>
+            <div class="forcast-icon">
+              <img src="images/sun.svg" />
+            </div>
+            <div class="forcast-temperature">
+              <span class="high-temperature">32</span
+              ><span class="degree">°C</span> /
+              <span class="low-temperature">21</span
+              ><span class="degree">°C</span>
+            </div>
           </div>
-          <div class="forcast-temperature">
-            <span class="high-temperature">33</span
-            ><span class="degree">°C</span> /
-            <span class="low-temperature">21</span
-            ><span class="degree">°C</span>
-          </div>
-        </div>
-        <div class="col forcast">
-          <div class="forcast-day">Tue</div>
-          <div class="forcast-icon">
-            <img src="images/sun.svg" />
-          </div>
-          <div class="forcast-temperature">
-            <span class="high-temperature">33</span
-            ><span class="degree">°C</span> /
-            <span class="low-temperature">20</span
-            ><span class="degree">°C</span>
-          </div>
-        </div>
-        <div class="col forcast">
-          <div class="forcast-day">Wed</div>
-          <div class="forcast-icon">
-            <img src="images/sun.svg" />
-          </div>
-          <div class="forcast-temperature">
-            <span class="high-temperature">32</span
-            ><span class="degree">°C</span> /
-            <span class="low-temperature">21</span
-            ><span class="degree">°C</span>
-          </div>
-        </div>
-        <div class="col forcast">
-          <div class="forcast-day">Thu</div>
-          <div class="forcast-icon">
-            <img src="images/sun.svg" />
-          </div>
-          <div class="forcast-temperature">
-            <span class="high-temperature">33</span
-            ><span class="degree">°C</span> /
-            <span class="low-temperature">21</span
-            ><span class="degree">°C</span>
+          <div class="col forcast">
+            <div class="forcast-day">Thu</div>
+            <div class="forcast-icon">
+              <img src="images/sun.svg" />
+            </div>
+            <div class="forcast-temperature">
+              <span class="high-temperature">33</span
+              ><span class="degree">°C</span> /
+              <span class="low-temperature">21</span
+              ><span class="degree">°C</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
+    <footer>
+      <small><a href="https://github.com/Mahsa-Goudarzi/weather-app">Open-source code</a> by Mahsa Goudarzi</small>
+    </footer>
     <script src="src/index.js"></script>
   </body>
 </html>

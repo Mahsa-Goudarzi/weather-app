@@ -12,8 +12,16 @@ a:hover {
   text-decoration: underline;
 }
 
+footer {
+  text-align: center;
+}
+
 .container {
-  margin-top: 50px;
+  width: 750px;
+}
+
+.weather-container {
+  margin: 50px 50px 0 50px;
   padding: 40px;
   max-width: 610px;
   border: 1px solid rgb(201, 194, 194);
