@@ -1,5 +1,5 @@
-function showCurrentTime(now) {
-  //this function shows the current date and time
+function showTime(now) {
+  //this function shows the day and time that weather data was updated
   let days = [
     "Sunday",
     "Monday",
@@ -20,14 +20,16 @@ function showCurrentTime(now) {
     minute = `0${minute}`;
   }
 
-  let today = document.querySelector("#current-time"); //these two lines shows the time that the forcast was updated
+  let today = document.querySelector("#update-time"); //these two lines shows the time that the forcast was updated
   today.innerHTML = `${weekDay} ${hour}:${minute}`;
 }
 
 function showCityAndTemp(response) {
   //this functions access the data of the chosen city and shows the name of the city and its properties
   document.querySelector("#city").innerHTML = response.data.name;
-  //console.log(response.data.weather[0].icon);
+  document.getElementById(
+    "icon-today"
+  ).src = `http://openweathermap.org/img/w/${response.data.weather[0].icon}.png`;
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
   document.querySelector("#temperature").innerHTML = Math.round(
@@ -44,7 +46,7 @@ function showCityAndTemp(response) {
     response.data.wind.speed
   );
 
-  showCurrentTime(new Date(response.data.dt * 1000));
+  showTime(new Date(response.data.dt * 1000));
 }
 
 function accessCity(event) {
