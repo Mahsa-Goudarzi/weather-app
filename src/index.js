@@ -31,12 +31,12 @@ function showCityAndTemp(response) {
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-  document.querySelector("#high-temp-today").innerHTML = Math.round(
+  document.querySelector("#high-temp-today").innerHTML = `${Math.round(
     response.data.main.temp_max
-  );
-  document.querySelector("#low-temp-today").innerHTML = Math.round(
+  )}°`;
+  document.querySelector("#low-temp-today").innerHTML = `${Math.round(
     response.data.main.temp_min
-  );
+  )}°`;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
