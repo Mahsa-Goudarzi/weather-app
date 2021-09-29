@@ -1,4 +1,4 @@
-function showCurrentTime() {
+function showCurrentTime(now) {
   //this function shows the current date and time
   let days = [
     "Sunday",
@@ -10,7 +10,6 @@ function showCurrentTime() {
     "Saturday",
   ];
 
-  let now = new Date();
   let weekDay = days[now.getDay()];
   let hour = now.getHours();
   if (hour < 10) {
@@ -20,14 +19,17 @@ function showCurrentTime() {
   if (minute < 10) {
     minute = `0${minute}`;
   }
-  return `${weekDay} ${hour}:${minute}`;
+
+  let today = document.querySelector("#current-time"); //these two lines shows the time that the forcast was updated
+  today.innerHTML = `${weekDay} ${hour}:${minute}`;
 }
 
 function showCityAndTemp(response) {
   //this functions access the data of the chosen city and shows the name of the city and its properties
   document.querySelector("#city").innerHTML = response.data.name;
+  //console.log(response.data.weather[0].icon);
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+    response.data.weather[0].description;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
@@ -41,6 +43,8 @@ function showCityAndTemp(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+
+  showCurrentTime(new Date(response.data.dt * 1000));
 }
 
 function accessCity(event) {
@@ -83,9 +87,6 @@ function showFarenheit(event) {
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(17 * 1.8 + 32);
 }
-
-let today = document.querySelector("#current-time"); //these two lines shows the current time
-today.innerHTML = showCurrentTime();
 
 let form = document.querySelector("form"); //these two lines access the city entered
 form.addEventListener("submit", accessCity);
