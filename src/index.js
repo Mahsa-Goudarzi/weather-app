@@ -1,4 +1,4 @@
-function showTime(now) {
+function showTime(timestamp) {
   //this function shows the day and time that weather data was updated
   let days = [
     "Sunday",
@@ -9,7 +9,7 @@ function showTime(now) {
     "Friday",
     "Saturday",
   ];
-
+  now = new Date(timestamp);
   let weekDay = days[now.getDay()];
   let hour = now.getHours();
   if (hour < 10) {
@@ -20,13 +20,15 @@ function showTime(now) {
     minute = `0${minute}`;
   }
 
-  let today = document.querySelector("#update-time"); //these two lines shows the time that the forcast was updated
-  today.innerHTML = `${weekDay} ${hour}:${minute}`;
+  return `${weekDay} ${hour}:${minute}`;
 }
 
 function showCityAndTemp(response) {
   //this functions access the data of the chosen city and shows the name of the city and its properties
   document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#update-time").innerHTML = showTime(
+    response.data.dt * 1000
+  ); //this line shows the time that the forcast was updated
   document.getElementById(
     "icon-today"
   ).src = `http://openweathermap.org/img/w/${response.data.weather[0].icon}.png`;
@@ -45,8 +47,6 @@ function showCityAndTemp(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
-
-  showTime(new Date(response.data.dt * 1000));
 }
 
 function accessCity(event) {
