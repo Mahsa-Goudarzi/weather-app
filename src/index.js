@@ -40,9 +40,10 @@ function showCityAndTemp(response) {
     .setAttribute("alt", response.data.weather[0].description);
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
+
+  celsiusTemperature = Math.round(response.data.main.temp);
+  document.querySelector("#temperature").innerHTML = celsiusTemperature;
+
   document.querySelector("#high-temp-today").innerHTML = `${Math.round(
     response.data.main.temp_max
   )}°`;
@@ -86,14 +87,14 @@ function accessCurrentLocation(event) {
 
 function showCelsius(event) {
   event.preventDefault();
-  let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = 17;
+  document.querySelector("#temperature").innerHTML = celsiusTemperature;
 }
 
-function showFarenheit(event) {
+function showFahrenheit(event) {
   event.preventDefault();
-  let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = Math.round(17 * 1.8 + 32);
+  document.querySelector("#temperature").innerHTML = Math.round(
+    celsiusTemperature * 1.8 + 32
+  );
 }
 
 let form = document.querySelector("form"); //these two lines access the city entered
@@ -102,8 +103,10 @@ form.addEventListener("submit", accessCity);
 let currentLocation = document.querySelector("#current-button"); //these two lines listens to current button
 currentLocation.addEventListener("click", accessCurrentLocation);
 
+let celsiusTemperature = null; //this is a variable that will contain the current temperature in celsius
+
 let celsius = document.querySelector("#celsius-link");
 celsius.addEventListener("click", showCelsius);
 
-let farenheit = document.querySelector("#farenheit-link");
-farenheit.addEventListener("click", showFarenheit);
+let farenheit = document.querySelector("#fahrenheit-link");
+farenheit.addEventListener("click", showFahrenheit);
