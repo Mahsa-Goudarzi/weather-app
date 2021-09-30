@@ -29,9 +29,12 @@ function showCityAndTemp(response) {
   document.querySelector("#update-time").innerHTML = showTime(
     response.data.dt * 1000
   ); //this line shows the time that the forcast was updated
-  document.getElementById(
-    "icon-today"
-  ).src = `http://openweathermap.org/img/w/${response.data.weather[0].icon}.png`;
+  document
+    .querySelector("#icon-today")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
   document.querySelector("#temperature").innerHTML = Math.round(

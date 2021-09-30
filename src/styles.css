@@ -35,6 +35,10 @@ footer {
   box-shadow: 0 2px 2px 0 rgb(228, 228, 228);
 }
 
+#icon-today {
+  width: fit-content;
+}
+
 #description {
   text-transform: capitalize;
 }
