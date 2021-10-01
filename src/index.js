@@ -87,11 +87,17 @@ function accessCurrentLocation(event) {
 
 function showCelsius(event) {
   event.preventDefault();
+  //add class "active" to celsius link and remove active class from fahrenheit link
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   document.querySelector("#temperature").innerHTML = celsiusTemperature;
 }
 
 function showFahrenheit(event) {
   event.preventDefault();
+  //add class "active" to fahrenheit link and remove active class from celsius link
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
   document.querySelector("#temperature").innerHTML = Math.round(
     celsiusTemperature * 1.8 + 32
   );
@@ -105,8 +111,8 @@ currentLocation.addEventListener("click", accessCurrentLocation);
 
 let celsiusTemperature = null; //this is a variable that will contain the current temperature in celsius
 
-let celsius = document.querySelector("#celsius-link");
-celsius.addEventListener("click", showCelsius);
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsius);
 
-let farenheit = document.querySelector("#fahrenheit-link");
-farenheit.addEventListener("click", showFahrenheit);
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheit);
