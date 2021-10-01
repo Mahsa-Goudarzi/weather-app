@@ -59,16 +59,19 @@ function showCityAndTemp(response) {
   );
 }
 
-function accessCity(event) {
-  //this function shows the city name of the city that was entered
-  event.preventDefault();
-  let city = document.querySelector("#city-input").value;
-
+function searchCity(city) {
   let apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
 
   axios.get(apiUrl).then(showCityAndTemp);
+}
+
+function accessCity(event) {
+  //this function shows the city name of the city that was entered
+  event.preventDefault();
+  let city = document.querySelector("#city-input").value;
+  searchCity(city);
 }
 
 function getCurrentLocationData(position) {
@@ -119,3 +122,5 @@ celsiusLink.addEventListener("click", showCelsius);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheit);
+
+searchCity("Tehran");
