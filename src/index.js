@@ -43,6 +43,9 @@ function showCityAndTemp(response) {
 
   celsiusTemperature = Math.round(response.data.main.temp);
   document.querySelector("#temperature").innerHTML = celsiusTemperature;
+  //add class "active" to celsius link and remove active class from fahrenheit link
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
 
   document.querySelector("#high-temp-today").innerHTML = `${Math.round(
     response.data.main.temp_max
