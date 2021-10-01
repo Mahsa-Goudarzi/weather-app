@@ -60,6 +60,7 @@ function showCityAndTemp(response) {
 }
 
 function searchCity(city) {
+  //this function reaches the data of the chosen city from API
   let apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
@@ -92,6 +93,7 @@ function accessCurrentLocation(event) {
 }
 
 function showCelsius(event) {
+  //this function shows the current temperature in Celsius
   event.preventDefault();
   //add class "active" to celsius link and remove active class from fahrenheit link
   celsiusLink.classList.add("active");
@@ -100,6 +102,7 @@ function showCelsius(event) {
 }
 
 function showFahrenheit(event) {
+  //this function shows the current temperature in Fahrenheit
   event.preventDefault();
   //add class "active" to fahrenheit link and remove active class from celsius link
   fahrenheitLink.classList.add("active");
@@ -117,10 +120,10 @@ currentLocation.addEventListener("click", accessCurrentLocation);
 
 let celsiusTemperature = null; //this is a variable that will contain the current temperature in celsius
 
-let celsiusLink = document.querySelector("#celsius-link");
+let celsiusLink = document.querySelector("#celsius-link"); //these four lines selects the link to unit conversion and changes it
 celsiusLink.addEventListener("click", showCelsius);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheit);
 
-searchCity("Tehran");
+searchCity("Tehran"); //set the default city to Tehran
