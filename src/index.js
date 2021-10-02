@@ -23,6 +23,27 @@ function showTime(timestamp) {
   return `${weekDay} ${hour}:${minute}`;
 }
 
+function showForcast() {
+  let forcastHTML = `<div class="row">`;
+  for (let i = 1; i <= 5; i++) {
+    forcastHTML += `
+    <div class="col forcast">
+      <div class="forcast-day">Sun</div>
+      <div class="forcast-icon">
+        <img src="images/sun.svg" />
+      </div>
+      <div class="forcast-temperature">
+        <span class="high-temperature">32°</span>
+        <span class="low-temperature">20°</span>
+      </div>
+    </div>
+    `;
+  }
+  forcastHTML += `</div>`;
+
+  document.querySelector("#forcast").innerHTML = forcastHTML;
+}
+
 function showCityAndTemp(response) {
   //this functions access the data of the chosen city and shows the name of the city and its properties
   document.querySelector("#city").innerHTML = response.data.name;
@@ -127,3 +148,4 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheit);
 
 searchCity("Tehran"); //set the default city to Tehran
+showForcast();
