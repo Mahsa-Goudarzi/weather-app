@@ -23,7 +23,8 @@ function showTime(timestamp) {
   return `${weekDay} ${hour}:${minute}`;
 }
 
-function showForcast() {
+function showForcast(response) {
+  console.log(response.data);
   let forcastHTML = `<div class="row">`;
   for (let i = 1; i <= 5; i++) {
     forcastHTML += `
@@ -42,6 +43,14 @@ function showForcast() {
   forcastHTML += `</div>`;
 
   document.querySelector("#forcast").innerHTML = forcastHTML;
+}
+
+function accessForcastData(lat, lon) {
+  let apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+
+  axios.get(apiUrl).then(showForcast);
 }
 
 function showCityAndTemp(response) {
@@ -78,6 +87,10 @@ function showCityAndTemp(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+
+  let lon = response.data.coord.lon;
+  let lat = response.data.coord.lat;
+  accessForcastData(lat, lon);
 }
 
 function searchCity(city) {
@@ -148,4 +161,3 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheit);
 
 searchCity("Tehran"); //set the default city to Tehran
-showForcast();
