@@ -23,34 +23,49 @@ function showTime(timestamp) {
   return `${weekDay} ${hour}:${minute}`;
 }
 
-function showForcast(response) {
-  console.log(response.data);
-  let forcastHTML = `<div class="row">`;
+function showForecast(response) {
+  let forecast = response.data.daily;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastDay,
+    weekDay,
+    day = null;
+
+  let forecastHTML = `<div class="row">`;
   for (let i = 1; i <= 5; i++) {
-    forcastHTML += `
+    forecastDay = forecast[i];
+    weekDay = new Date(forecastDay.dt * 1000);
+    day = days[weekDay.getDay()];
+
+    forecastHTML += `
     <div class="col forcast">
-      <div class="forcast-day">Sun</div>
+      <div class="forcast-day">${day}</div>
       <div class="forcast-icon">
-        <img src="images/sun.svg" />
+        <img src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png" width="50"/>
       </div>
-      <div class="forcast-temperature">
-        <span class="high-temperature">32°</span>
-        <span class="low-temperature">20°</span>
-      </div>
+      <div class="forcast-temperature"><small>
+        <span class="high-temperature">${Math.round(
+          forecastDay.temp.max
+        )}°</span>
+        <span class="low-temperature">${Math.round(
+          forecastDay.temp.min
+        )}°</span>
+      </small></div>
     </div>
     `;
   }
-  forcastHTML += `</div>`;
+  forecastHTML += `</div>`;
 
-  document.querySelector("#forcast").innerHTML = forcastHTML;
+  document.querySelector("#forecast").innerHTML = forecastHTML;
 }
 
-function accessForcastData(lat, lon) {
+function accessForecastData(lat, lon) {
   let apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&exclude=hourly,minutely&appid=${apiKey}`;
 
-  axios.get(apiUrl).then(showForcast);
+  axios.get(apiUrl).then(showForecast);
 }
 
 function showCityAndTemp(response) {
@@ -90,7 +105,7 @@ function showCityAndTemp(response) {
 
   let lon = response.data.coord.lon;
   let lat = response.data.coord.lat;
-  accessForcastData(lat, lon);
+  accessForecastData(lat, lon);
 }
 
 function searchCity(city) {
