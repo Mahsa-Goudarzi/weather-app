@@ -23,22 +23,23 @@ function showTime(timestamp) {
   return `${weekDay} ${hour}:${minute}`;
 }
 
+function formatDay(timestamp) {
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let weekDay = new Date(timestamp);
+  let day = days[weekDay.getDay()];
+  return day;
+}
+
 function showForecast(response) {
   let forecast = response.data.daily;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let forecastDay,
-    weekDay,
-    day = null;
+  let forecastDay = null;
 
   let forecastHTML = `<div class="row">`;
   for (let i = 1; i <= 5; i++) {
     forecastDay = forecast[i];
-    weekDay = new Date(forecastDay.dt * 1000);
-    day = days[weekDay.getDay()];
-
     forecastHTML += `
     <div class="col forcast">
-      <div class="forcast-day">${day}</div>
+      <div class="forcast-day">${formatDay(forecastDay.dt * 1000)}</div>
       <div class="forcast-icon">
         <img src="http://openweathermap.org/img/wn/${
           forecastDay.weather[0].icon
