@@ -176,4 +176,4 @@ celsiusLink.addEventListener("click", showCelsius);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheit);
 
-searchCity("Tehran"); //set the default city to Tehran
+searchCity("Paris"); //set the default city to Paris
