@@ -5,7 +5,7 @@ function showTime(timestamp) {
     "Monday",
     "Tuesday",
     "Wednesday",
-    "Thusrday",
+    "Thursday",
     "Friday",
     "Saturday",
   ];
